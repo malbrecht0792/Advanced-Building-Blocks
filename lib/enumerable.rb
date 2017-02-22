@@ -31,36 +31,33 @@ module Enumerable
 		i = 0
 		while i < self.size
 			unless yield(self[i])
-				p false
-				return
+				return false
 			end
 			i += 1
 		end
-		p true
+		true
 	end
 
 	def my_any?
 		i = 0
 		while i < self.size
 			if yield(self[i])
-				p true
-				return
+				return true
 			end
 			i += 1
 		end
-		p false
+		false
 	end
 
 	def my_none?
 		i = 0
 		while i < self.size
 			if yield (self[i])
-				p false
-				return
+				return false
 			end
 			i += 1 
 		end
-		p true
+		true
 	end
 
 	def my_count(val=nil)
@@ -105,22 +102,22 @@ module Enumerable
 
 end
 
-[1,2,3].my_each{|x| puts x}
-[1,2,3].my_each_with_index{|x, index| puts "value: #{x}, index: #{index}"}
-my_array = [1,2,3,4,5,6,7,8,100]
-my_array.my_select{|item| item%2==0 }
-my_array.my_all?{|item| item < 200}
-my_array.my_any?{|item| item > 50}
-my_array.my_none?{|item| item > 100}
-[1,2,3,4,5,6,7,8,100].my_count
-[1,2,3,4,4,6,7,8,100].my_count(4)
-[1,2,3,4,4,6,7,8,100].my_count{|i| i.even?}
-["tokyo","london", "rio"].my_map{|item| item.capitalize}
-[1, 2, 3, 4].my_inject{ |result, element| result + element }
-[2,4,5].multiply_els
+#[1,2,3].my_each{|x| puts x}
+#[1,2,3].my_each_with_index{|x, index| puts "value: #{x}, index: #{index}"}
+#my_array = [1,2,3,4,5,6,7,8,100]
+#my_array.my_select{|item| item%2==0 }
+#p my_array.my_all?{|item| item < 200}
+#p my_array.my_any?{|item| item > 50}
+#p my_array.my_none?{|item| item > 100}
+#[1,2,3,4,5,6,7,8,100].my_count
+#[1,2,3,4,4,6,7,8,100].my_count(4)
+#[1,2,3,4,4,6,7,8,100].my_count{|i| i.even?}
+#["tokyo","london", "rio"].my_map{|item| item.capitalize}
+#[1, 2, 3, 4].my_inject{ |result, element| result + element }
+#[2,4,5].multiply_els
 
-my_proc = Proc.new { |arg1| print "#{arg1}! " }
-[1,2,3].my_map(&my_proc)
+#my_proc = Proc.new { |arg1| print "#{arg1}! " }
+#[1,2,3].my_map(&my_proc)
 
 
 
